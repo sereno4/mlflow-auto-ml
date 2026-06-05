@@ -197,45 +197,6 @@ mlflow-auto-ml/
 - Arquitetura pronta para produção
 
 
-Pipeline de Treinamento
-T1 — Extração e Features
-Conexão PostgreSQL via SQLAlchemy
-Extração da View vw_features_v1
-Criação de 15 features derivadas
-Versionamento por hash
-T2 — Drift Detection
-Evidently AI
-KS-Test (fallback)
-Comparação com baseline
-T3 — Treinamento
-XGBoost
-CPU Only
-Tempo médio inferior a 30 segundos
-T4 — Sanity Checks
-Predições não constantes
-Ausência de NaN
-Balanceamento de classes
-F1 Score mínimo
-Latência validada
-T5 — Promoção
-Registry MLflow
-Produção automática
-Arquivamento da versão anterior
-T6 — Deploy
-FastAPI Hot Reload
-Health Check
-Modelo ativo em produção
-📈 Resultados
-🔄 Pipeline totalmente automatizado
-🚀 Deploy contínuo de modelos
-⚡ Inferência inferior a 10ms
-🛡️ Governança completa do ciclo de vida
-✅ 54/54 testes passando
-🏭 Arquitetura pronta para produção
----
-
-## 📜 Licença
-
 MIT License
 """
 
