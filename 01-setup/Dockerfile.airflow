@@ -1,0 +1,9 @@
+FROM apache/airflow:2.9.0
+RUN pip install --no-cache-dir \
+    mlflow==2.14.0 \
+    xgboost \
+    scikit-learn \
+    evidently \
+    pandas \
+    numpy \
+    psycopg2-binary
