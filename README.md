@@ -5,130 +5,198 @@ MLFlow Auto ML Platform
 [![MLflow](https://img.shields.io/badge/MLflow-Tracking%20%26%20Registry-0194E2?logo=mlflow)](https://mlflow.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-<10ms_Latency-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 
-
-Plataforma AutoML pronta para produção com governança MLOps, detecção automática de drift, re-treinamento inteligente e deploy contínuo de modelos de Machine Learning.
-
-
-
-
-
-
-
+MLFlow Auto ML Platform
 
 🎯 Visão Geral
-
 Este projeto implementa um pipeline completo de Machine Learning em produção, automatizando todo o ciclo de vida do modelo:
-
-Extração de dados
-Engenharia de features
-Treinamento
-Detecção de drift
-Validação
-Governança
-Deploy
-Monitoramento
-
+Extração de dados → Engenharia de features → Treinamento → Detecção de drift → Validação → Governança → Deploy → Monitoramento
 O objetivo é demonstrar uma arquitetura MLOps real, resiliente e reproduzível.
 
-🏗️ Arquitetura
+
+
 ┌──────────────────────────────────────────────┐
 │           DATA & TELEMETRY LAYER             │
 ├──────────────────────────────────────────────┤
 │ PostgreSQL                                   │
-│ • Training Data                              │
-│ • Inference Logs                             │
-│ • Drift Monitoring Events                    │
+│  • Training Data                             │
+│  • Inference Logs                            │
+│  • Drift Monitoring Events                   │
 └──────────────────┬───────────────────────────┘
                    │
                    ▼
 ┌──────────────────────────────────────────────┐
 │            ORCHESTRATION LAYER               │
-│              Apache Airflow                  │
+│            Apache Airflow                    │
 ├──────────────────────────────────────────────┤
 │ Extract Data                                 │
-│        ↓                                     │
+│      ↓                                       │
 │ Drift Detection                              │
-│        ↓                                     │
-│  Drift?                                      │
-│   ├─ Yes → Train → Validate → Promote       │
-│   └─ No  → Keep Current Model               │
+│      ↓                                       │
+│ Drift?                                       │
+│  ├─ Yes → Train → Validate → Promote         │
+│  └─ No  → Keep Current Model                 │
 └──────────────────┬───────────────────────────┘
                    │
                    ▼
 ┌──────────────────────────────────────────────┐
-│           GOVERNANCE LAYER                   │
+│             GOVERNANCE LAYER                 │
 │             MLflow Registry                  │
 ├──────────────────────────────────────────────┤
-│ • Experiment Tracking                        │
-│ • Model Versioning                           │
-│ • Registry                                   │
-│ • Promotion                                  │
-│ • Rollback                                   │
+│  • Experiment Tracking                       │
+│  • Model Versioning                          │
+│  • Registry                                  │
+│  • Promotion                                 │
+│  • Rollback                                  │
 └──────────────────┬───────────────────────────┘
                    │
                    ▼
 ┌──────────────────────────────────────────────┐
-│            SERVING LAYER                     │
-│                FastAPI                       │
+│              SERVING LAYER                   │
+│              FastAPI                         │
 ├──────────────────────────────────────────────┤
-│ • REST API                                   │
-│ • Pydantic Validation                        │
-│ • Hot Reload                                 │
-│ • Cached Model Fallback                      │
-│ • <10ms Inference                            │
+│  • REST API                                  │
+│  • Pydantic Validation                       │
+│  • Hot Reload                                │
+│  • Cached Model Fallback                     │
+│  • <10ms Inference                           │
 └──────────────────┬───────────────────────────┘
                    │
                    ▼
 ┌──────────────────────────────────────────────┐
 │        MONITORING & RELIABILITY              │
 ├──────────────────────────────────────────────┤
-│ • Drift Detection                            │
-│ • Automated Retraining                       │
-│ • Slack Alerts                               │
-│ • Health Checks                              │
-│ • Production Safety Gates                    │
+│  • Drift Detection                           │
+│  • Automated Retraining                      │
+│  • Slack Alerts                              │
+│  • Health Checks                             │
+│  • Production Safety Gates                   │
 └──────────────────────────────────────────────┘
-🚀 Principais Capacidades
 
+Principais Capacidades
 ✅ Detecção automática de Data Drift
-
 ✅ Retraining automatizado baseado em evidências
-
 ✅ Governança completa com MLflow
-
 ✅ Promoção automática para produção
-
 ✅ Rollback seguro de modelos
-
 ✅ Inferência de baixa latência (<10ms)
-
 ✅ Monitoramento contínuo
-
 ✅ Pipeline reproduzível de ponta a ponta
 
-🛠️ Stack Tecnológica
-Machine Learning
-XGBoost
-Scikit-Learn
-Pandas
-NumPy
-MLOps
-MLflow
-Apache Airflow
-Backend
-FastAPI
-Pydantic
-Dados
-PostgreSQL
-SQLAlchemy
-Infraestrutura
-Docker
-Docker Compose
-Observabilidade
-Drift Monitoring
-Logging
-Alerting
-📁 Estrutura do Projeto
+
+
+content = """# MLFlow Auto ML Platform
+
+**Python Version | Airflow | MLflow | FastAPI**
+
+Plataforma AutoML pronta para produção com governança MLOps, detecção automática de drift, re-treinamento inteligente e deploy contínuo de modelos de Machine Learning.
+
+---
+
+## 🎯 Visão Geral
+
+Este projeto implementa um pipeline completo de Machine Learning em produção, automatizando todo o ciclo de vida do modelo:
+
+```
+Extração de dados → Engenharia de features → Treinamento → Detecção de drift → Validação → Governança → Deploy → Monitoramento
+```
+
+O objetivo é demonstrar uma arquitetura MLOps real, resiliente e reproduzível.
+
+---
+
+## 🏗️ Arquitetura
+
+```
+┌──────────────────────────────────────────────┐
+│         DATA & TELEMETRY LAYER               │
+├──────────────────────────────────────────────┤
+│  PostgreSQL                                  │
+│  • Training Data                             │
+│  • Inference Logs                            │
+│  • Drift Monitoring Events                   │
+└──────────────────┬───────────────────────────┘
+                   │
+                   ▼
+┌──────────────────────────────────────────────┐
+│         ORCHESTRATION LAYER                  │
+│         Apache Airflow                       │
+├──────────────────────────────────────────────┤
+│  Extract Data                                │
+│       ↓                                      │
+│  Drift Detection                             │
+│       ↓                                      │
+│  Drift?                                      │
+│  ├─ Yes → Train → Validate → Promote         │
+│  └─ No → Keep Current Model                  │
+└──────────────────┬───────────────────────────┘
+                   │
+                   ▼
+┌──────────────────────────────────────────────┐
+│         GOVERNANCE LAYER                     │
+│         MLflow Registry                      │
+├──────────────────────────────────────────────┤
+│  • Experiment Tracking                       │
+│  • Model Versioning                          │
+│  • Registry                                  │
+│  • Promotion                                 │
+│  • Rollback                                  │
+└──────────────────┬───────────────────────────┘
+                   │
+                   ▼
+┌──────────────────────────────────────────────┐
+│         SERVING LAYER                        │
+│         FastAPI                              │
+├──────────────────────────────────────────────┤
+│  • REST API                                  │
+│  • Pydantic Validation                       │
+│  • Hot Reload                                │
+│  • Cached Model Fallback                     │
+│  • <10ms Inference                           │
+└──────────────────┬───────────────────────────┘
+                   │
+                   ▼
+┌──────────────────────────────────────────────┐
+│      MONITORING & RELIABILITY                │
+├──────────────────────────────────────────────┤
+│  • Drift Detection                           │
+│  • Automated Retraining                      │
+│  • Slack Alerts                              │
+│  • Health Checks                             │
+│  • Production Safety Gates                   │
+└──────────────────────────────────────────────┘
+```
+
+---
+
+## 🚀 Principais Capacidades
+
+- ✅ Detecção automática de Data Drift
+- ✅ Retraining automatizado baseado em evidências
+- ✅ Governança completa com MLflow
+- ✅ Promoção automática para produção
+- ✅ Rollback seguro de modelos
+- ✅ Inferência de baixa latência (<10ms)
+- ✅ Monitoramento contínuo
+- ✅ Pipeline reproduzível de ponta a ponta
+
+---
+
+## 🛠️ Stack Tecnológica
+
+| Categoria          | Tecnologias                          |
+|--------------------|--------------------------------------|
+| **Machine Learning** | XGBoost, Scikit-Learn, Pandas, NumPy |
+| **MLOps**          | MLflow, Apache Airflow               |
+| **Backend**        | FastAPI, Pydantic                    |
+| **Dados**          | PostgreSQL, SQLAlchemy               |
+| **Infraestrutura** | Docker, Docker Compose               |
+| **Observabilidade** | Drift Monitoring, Logging, Alerting  |
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
 mlflow-auto-ml/
 │
 ├── 01-setup/
@@ -170,53 +238,57 @@ mlflow-auto-ml/
 │   └── test_sanity.py
 │
 └── README.md
-🧪 Qualidade
-Total de Testes: 54/54 ✅
+```
 
-Infraestrutura ............ 6/6
-Dados ..................... 5/5
-Features .................. 5/5
-Treinamento ............... 6/6
-MLflow Registry ........... 6/6
-Drift Detection ........... 6/6
-Airflow DAG ............... 6/6
-FastAPI Serving ........... 6/6
-Sanity Checks ............. 8/8
-🔬 Pipeline de Treinamento
-T1 — Extração e Features
-Conexão PostgreSQL via SQLAlchemy
-Extração da View vw_features_v1
-Criação de 15 features derivadas
-Versionamento por hash
-T2 — Drift Detection
-Evidently AI
-KS-Test (fallback)
-Comparação com baseline
-T3 — Treinamento
-XGBoost
-CPU Only
-Tempo médio inferior a 30 segundos
-T4 — Sanity Checks
-Predições não constantes
-Ausência de NaN
-Balanceamento de classes
-F1 Score mínimo
-Latência validada
-T5 — Promoção
-Registry MLflow
-Produção automática
-Arquivamento da versão anterior
-T6 — Deploy
-FastAPI Hot Reload
-Health Check
-Modelo ativo em produção
-📈 Resultados
-Pipeline totalmente automatizado
-Deploy contínuo de modelos
-Inferência inferior a 10ms
-Governança completa do ciclo de vida
-54/54 testes passando
-Arquitetura pronta para produção
-📜 Licença
+---
+
+## 🧪 Qualidade — Total de Testes: 54/54 ✅
+
+| Módulo              | Testes |
+|---------------------|--------|
+| Infraestrutura      | 6/6    |
+| Dados               | 5/5    |
+| Features            | 5/5    |
+| Treinamento         | 6/6    |
+| MLflow Registry     | 6/6    |
+| Drift Detection     | 6/6    |
+| Airflow DAG         | 6/6    |
+| FastAPI Serving     | 6/6    |
+| Sanity Checks       | 8/8    |
+
+---
+
+## 🔬 Pipeline de Treinamento
+
+| Etapa | Descrição |
+|-------|-----------|
+| **T1 — Extração e Features** | Conexão PostgreSQL via SQLAlchemy, extração da View `vw_features_v1`, criação de 15 features derivadas, versionamento por hash |
+| **T2 — Drift Detection** | Evidently AI + KS-Test (fallback), comparação com baseline |
+| **T3 — Treinamento** | XGBoost CPU Only, tempo médio inferior a 30 segundos |
+| **T4 — Sanity Checks** | Predições não constantes, ausência de NaN, balanceamento de classes, F1 Score mínimo, latência validada |
+| **T5 — Promoção** | Registry MLflow, produção automática, arquivamento da versão anterior |
+| **T6 — Deploy** | FastAPI Hot Reload, Health Check, modelo ativo em produção |
+
+---
+
+## 📈 Resultados
+
+- Pipeline totalmente automatizado
+- Deploy contínuo de modelos
+- Inferência inferior a 10ms
+- Governança completa do ciclo de vida
+- 54/54 testes passando
+- Arquitetura pronta para produção
+
+---
+
+## 📜 Licença
 
 MIT License
+"""
+
+with open('/mnt/agents/output/README.md', 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Arquivo README.md formatado salvo com sucesso!")
+print(f"Tamanho: {len(content)} caracteres")
