@@ -200,8 +200,5 @@ mlflow-auto-ml/
 MIT License
 """
 
-with open('/mnt/agents/output/README.md', 'w', encoding='utf-8') as f:
-    f.write(content)
-
 print("Arquivo README.md formatado salvo com sucesso!")
 print(f"Tamanho: {len(content)} caracteres")
